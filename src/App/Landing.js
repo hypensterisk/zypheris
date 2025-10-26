@@ -1,7 +1,18 @@
 import Button from 'react-bootstrap/Button'
-import { Link } from 'react-router'
+import { Link, useNavigate } from 'react-router'
+import localforage from 'localforage'
+import {useEffect} from 'react'
 
 export default function Landing() {
+  const navigate = useNavigate()
+  useEffect(() => {
+    localforage.getItem('database')
+      .then((value) => {
+        if (value !== null) {
+          navigate('/unlock')
+        }
+      })
+  }, [])
   return (
     <div className='h-100 d-flex flex-column'>
       <div className='h-50 d-flex flex-column align-items-center justify-content-end'>

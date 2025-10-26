@@ -40,11 +40,6 @@ export default function Create() {
   useEffect(() => {
     const { percent } = pm.getResult(password)
     setPercent(percent)
-    if (password !== '' && percent <= 75) {
-      setFieldError('password', 'Weak')
-      setFieldTouched('password', true)
-      console.log(touched, errors)
-    }
   }, [password])
   return (
     <div className='h-100 d-flex flex-column justify-content-center align-items-center p-3 gap-4'>
@@ -65,7 +60,7 @@ export default function Create() {
           <Button onClick={() => setShow(show => !show)} variant='light'><i className={`fa-solid fa-eye${show ? '' : '-slash'}`} /></Button>
           <Form.Control.Feedback type="invalid">{errors.password}</Form.Control.Feedback>
         </InputGroup>
-        <ProgressBar animated={values.password !== password} variant={  percent > 25 ? percent > 50 ? percent > 75 ? 'success' : 'primary' : 'warning' : 'danger'} now={percent} />
+        <ProgressBar animated={values.password !== password} variant={percent > 25 ? percent > 50 ? percent > 75 ? 'success' : 'primary' : 'warning' : 'danger'} now={percent} />
         <Button disabled={values.name === '' || values.password === '' || errors.name || errors.password || percent <= 75} type='submit' variant='primary'><i className='fa-solid fa-save' /> Create Database</Button>
         <Button as={Link} to='..' path='relative' variant='outline-light'><i className='fa-solid fa-arrow-left' /> Back</Button>
       </Form>
