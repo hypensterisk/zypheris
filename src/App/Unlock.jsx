@@ -117,7 +117,7 @@ export default function Unlock() {
             onClick={() => {
               setDatabase(null);
               setName("");
-              navigate("/setup", { replace: true });
+              navigate("/setup");
             }}
           >
             Delete database
