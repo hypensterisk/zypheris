@@ -1,7 +1,7 @@
 import { Routes, Route } from "react-router";
-import Create from "./Create";
-import Upload from "./Upload";
-import SetupChoice from "./SetupChoice";
+import Create from "./Create.jsx";
+import Upload from "./Upload.jsx";
+import SetupChoice from "./SetupChoice.jsx";
 
 export default function Setup() {
   return (

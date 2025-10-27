@@ -2,12 +2,34 @@
   "name": "zypheris",
   "version": "1.0.0",
   "description": "Simple web application for managing passwords",
-  "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build"
+  "keywords": [
+    "password",
+    "security",
+    "encryption",
+    "vault"
+  ],
+  "homepage": "https://github.com/hypensterisk/zypheris",
+  "bugs": {
+    "url": "https://github.com/hypensterisk/zypheris/issues",
+    "email": "roykhanalaushaf0@gmail.com"
   },
-  "author": "hypensterisk",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/hypensterisk/zypheris.git"
+  },
   "license": "MIT",
+  "author": {
+    "name": "Roykhan Al Aushaf",
+    "email": "roykhanalaushaf0@gmail.com",
+    "url": "https://github.com/hypensterisk"
+  },
+  "type": "module",
+  "scripts": {
+    "build": "vite build",
+    "dev": "vite",
+    "lint": "eslint",
+    "preview": "vite preview"
+  },
   "dependencies": {
     "@fortawesome/fontawesome-free": "^7.1.0",
     "bootstrap": "^5.3.8",
@@ -19,21 +41,20 @@
     "react-bootstrap": "^2.10.10",
     "react-dom": "^19.2.0",
     "react-router": "^7.9.4",
-    "react-scripts": "^5.0.1",
     "use-debounce": "^10.0.6",
     "yup": "^1.7.1",
     "zustand": "^5.0.8"
   },
-  "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
-    ]
+  "devDependencies": {
+    "@eslint/js": "^9.38.0",
+    "@vitejs/plugin-react": "^5.1.0",
+    "eslint": "^9.38.0",
+    "eslint-plugin-react-hooks": "^7.0.1",
+    "eslint-plugin-react-refresh": "^0.4.24",
+    "globals": "^16.4.0",
+    "prettier": "^3.6.2",
+    "prettier-plugin-packagejson": "^2.5.19",
+    "prettier-plugin-sort-json": "^4.1.1",
+    "vite": "^7.1.12"
   }
 }

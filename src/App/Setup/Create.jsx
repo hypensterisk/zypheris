@@ -1,4 +1,4 @@
-import { useState, useEffect, useMemo } from "react";
+import { useState, useMemo } from "react";
 import { Link, useNavigate } from "react-router";
 import { AES } from "crypto-js";
 import { useFormik } from "formik";
@@ -16,7 +16,6 @@ export default function Create() {
   const setDatabase = useDatabaseStore((state) => state.setDatabase);
   const pm = useMemo(() => new PasswordMeter(), []);
   const [show, setShow] = useState(false);
-  const [percent, setPercent] = useState(0);
   const navigate = useNavigate();
   const { handleSubmit, handleChange, handleBlur, values, errors, touched } =
     useFormik({
@@ -41,9 +40,8 @@ export default function Create() {
       },
     });
   const [password] = useDebounce(values.password, 200);
-  useEffect(() => {
-    const { percent } = pm.getResult(password);
-    setPercent(percent);
+  const percent = useMemo(() => {
+    return pm.getResult(password).percent;
   }, [password, pm]);
   return (
     <div className="h-100 d-flex flex-column justify-content-center align-items-center p-3 gap-4">
