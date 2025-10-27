@@ -8,8 +8,10 @@ import Form from "react-bootstrap/Form";
 import InputGroup from "react-bootstrap/InputGroup";
 import Modal from "react-bootstrap/Modal";
 import useDatabaseStore from "../hooks/useDatabaseStore";
+import useNoBackNavigation from "../hooks/useNoBackNavigation.js";
 
 export default function Unlock() {
+  useNoBackNavigation();
   const setPassword = useDatabaseStore((state) => state.setPassword);
   const database = useDatabaseStore((state) => state.database);
   const setDatabase = useDatabaseStore((state) => state.setDatabase);
@@ -115,7 +117,7 @@ export default function Unlock() {
             onClick={() => {
               setDatabase(null);
               setName("");
-              navigate("/setup");
+              navigate("/setup", { replace: true });
             }}
           >
             Delete database
