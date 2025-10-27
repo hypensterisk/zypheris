@@ -1,8 +1,8 @@
 import { BrowserRouter, Routes, Route } from "react-router";
-import Landing from "./Landing";
-import Setup from "./Setup";
-import Unlock from "./Unlock";
-import Dashboard from "./Dashboard";
+import Landing from "./Landing.jsx";
+import Setup from "./Setup/index.jsx";
+import Unlock from "./Unlock.jsx";
+import Dashboard from "./Dashboard.jsx";
 
 export default function App() {
   return (
