@@ -1,46 +1,50 @@
-import { create } from "zustand";
-import { persist, createJSONStorage } from "zustand/middleware";
-import localforage from "localforage";
-import { AES, enc } from "crypto-js";
+import { create } from 'zustand'
+import { persist, createJSONStorage } from 'zustand/middleware'
+import localforage from 'localforage'
+import { AES, enc } from 'crypto-js'
 
 const useDatabaseStore = create(
   persist((set, get) => ({
-    name: "",
+    name: '',
     setName: (name) => set({ name }),
     database: null,
     setDatabase: (database) => {
-      const { password } = get();
-      if (database !== null && password !== "") {
+      const { password } = get()
+      if (database !== null && password !== '') {
         const data = JSON.parse(
           AES.decrypt(database, password).toString(enc.Utf8),
-        );
-        return set({ database, data });
+        )
+        return set({ database, data })
       }
-      return set({ database });
+      return set({ database })
     },
-    password: "",
+    password: '',
     setPassword: (password) => {
-      const { database } = get();
-      if (database !== null && password !== "") {
+      const { database } = get()
+      if (database !== null && password !== '') {
         const data = JSON.parse(
           AES.decrypt(database, password).toString(enc.Utf8),
-        );
-        return set({ password, data });
+        )
+        return set({ password, data })
       }
-      return set({ password });
+      return set({ password })
     },
     data: null,
     setData: (data) => {
-      const { password } = get();
-      const database = AES.encrypt(JSON.stringify(data), password).toString();
-      return set({ data, database });
+      const { password } = get()
+      const database = AES.encrypt(JSON.stringify(data), password).toString()
+      return set({ data, database })
     },
   })),
   {
-    name: "database",
+    name: 'database',
     storage: createJSONStorage(() => localforage),
-    partialize: ({ name, database }) => ({ name, database }),
+    partialize: ({ name, database, password }) => ({
+      name,
+      database,
+      password,
+    }),
   },
-);
+)
 
-export default useDatabaseStore;
+export default useDatabaseStore
