@@ -7,7 +7,7 @@ import Dashboard from './Dashboard/index.jsx'
 
 export default function App() {
   return (
-    <BrowserRouter>
+    <BrowserRouter basename='/zypheris'>
       <Routes>
         <Route index element={<Landing />} />
         <Route path='setup/*' element={<Setup />} />
