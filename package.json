@@ -28,8 +28,7 @@
     "build": "vite build",
     "dev": "vite",
     "lint": "eslint",
-    "preview": "vite preview",
-    "deploy": "gh-pages -d dist"
+    "preview": "vite preview"
   },
   "dependencies": {
     "@fortawesome/fontawesome-free": "^7.1.0",
@@ -60,7 +59,6 @@
     "eslint-plugin-react-hooks": "^7.0.1",
     "eslint-plugin-react-refresh": "^0.4.24",
     "eslint-plugin-unused-imports": "^4.3.0",
-    "gh-pages": "^6.3.0",
     "globals": "^16.4.0",
     "prettier": "^3.6.2",
     "prettier-plugin-packagejson": "^2.5.19",
