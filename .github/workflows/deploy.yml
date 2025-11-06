@@ -27,6 +27,8 @@ jobs:
 
       - name: Building for production
         run: npm run build
+        env:
+          VITE_BASE: '/zypheris/'
 
       - name: Deploy to github page
         uses: peaceiris/actions-gh-pages@v4
