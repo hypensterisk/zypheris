@@ -1,14 +1,11 @@
 {
-  "arrowParens": "always",
-  "bracketSameLine": true,
-  "bracketSpacing": true,
-  "endOfLine": "lf",
+  "htmlWhitespaceSensitivity": "strict",
+  "insertPragma": true,
   "jsxSingleQuote": true,
+  "objectWrap": "collapse",
   "plugins": ["prettier-plugin-sort-json", "prettier-plugin-packagejson"],
-  "printWidth": 80,
+  "proseWrap": "never",
   "semi": false,
-  "singleQuote": true,
-  "tabWidth": 2,
-  "trailingComma": "all",
-  "useTabs": false
+  "singleAttributePerLine": true,
+  "singleQuote": true
 }
