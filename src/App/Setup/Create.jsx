@@ -1,14 +1,16 @@
-import { useState, useMemo } from 'react'
-import { Link, useNavigate } from 'react-router'
+/** @format */
+
 import { AES } from 'crypto-js'
 import { useFormik } from 'formik'
-import { object, string } from 'yup'
-import { useDebounce } from 'use-debounce'
 import { PasswordMeter } from 'password-meter'
+import { useState, useMemo } from 'react'
 import Button from 'react-bootstrap/Button'
 import Form from 'react-bootstrap/Form'
 import InputGroup from 'react-bootstrap/InputGroup'
 import ProgressBar from 'react-bootstrap/ProgressBar'
+import { Link, useNavigate } from 'react-router'
+import { useDebounce } from 'use-debounce'
+import { object, string } from 'yup'
 
 import useDatabaseStore from '../../hooks/useDatabaseStore.js'
 
@@ -27,10 +29,7 @@ export default function Create() {
     errors,
     touched,
   } = useFormik({
-    initialValues: {
-      name: '',
-      password: '',
-    },
+    initialValues: { name: '', password: '' },
     validationSchema: object({
       name: string().required('Please enter a name for the database'),
       password: string()
@@ -64,7 +63,10 @@ export default function Create() {
           Please enter the name and password for the database
         </h2>
       </div>
-      <Form onSubmit={handleSubmit} className='d-flex flex-column gap-2'>
+      <Form
+        onSubmit={handleSubmit}
+        className='d-flex flex-column gap-2'
+      >
         <InputGroup hasValidation>
           <InputGroup.Text>
             <i className='fa-solid fa-file' />
@@ -96,7 +98,10 @@ export default function Create() {
             type={show ? 'text' : 'password'}
             placeholder='Password'
           />
-          <Button onClick={() => setShow((show) => !show)} variant='light'>
+          <Button
+            onClick={() => setShow((show) => !show)}
+            variant='light'
+          >
             <i className={`fa-solid fa-eye${show ? '' : '-slash'}`} />
           </Button>
           <Form.Control.Feedback type='invalid'>
@@ -125,10 +130,16 @@ export default function Create() {
             !(percent > 75)
           }
           type='submit'
-          variant='primary'>
+          variant='primary'
+        >
           <i className='fa-solid fa-save' /> Create Database
         </Button>
-        <Button as={Link} to='..' path='relative' variant='outline-light'>
+        <Button
+          as={Link}
+          to='..'
+          path='relative'
+          variant='outline-light'
+        >
           <i className='fa-solid fa-arrow-left' /> Back
         </Button>
       </Form>

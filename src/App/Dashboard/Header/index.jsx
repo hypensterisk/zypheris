@@ -1,14 +1,19 @@
+/** @format */
+
+import Container from 'react-bootstrap/Container'
+import Nav from 'react-bootstrap/Nav'
 import Navbar from 'react-bootstrap/Navbar'
 import Offcanvas from 'react-bootstrap/Offcanvas'
-import Nav from 'react-bootstrap/Nav'
-import Container from 'react-bootstrap/Container'
 
 import ExportDatabaseButton from './ExportDatabaseButton.jsx'
 import LogoutButton from './LogoutButton.jsx'
 
 export default function Header() {
   return (
-    <Navbar expand={false} className='bg-body-tertiary'>
+    <Navbar
+      expand={false}
+      className='bg-body-tertiary'
+    >
       <Container fluid>
         <Navbar.Brand>Dashboard</Navbar.Brand>
         <Navbar.Toggle className='px-3 py-2'>

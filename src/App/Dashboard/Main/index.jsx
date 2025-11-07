@@ -1,9 +1,11 @@
+/** @format */
+
 import { AnimatePresence } from 'framer-motion'
 import { ListGroup, Button } from 'react-bootstrap'
 import { useParams } from 'react-router'
 
-import useDatabaseStore from '../../../hooks/useDatabaseStore.js'
 import CardItem from './CardItem.jsx'
+import useDatabaseStore from '../../../hooks/useDatabaseStore.js'
 
 export default function Main() {
   const { '*': splat } = useParams()
@@ -114,7 +116,12 @@ export default function Main() {
                   })
               }
               return (
-                <CardItem key={card.id} card={card} left={left} right={right} />
+                <CardItem
+                  key={card.id}
+                  card={card}
+                  left={left}
+                  right={right}
+                />
               )
             })}
         </ListGroup>
@@ -137,7 +144,8 @@ export default function Main() {
           })
         }}
         variant='primary'
-        style={{ position: 'absolute', right: 20, bottom: 20 }}>
+        style={{ position: 'absolute', right: 20, bottom: 20 }}
+      >
         <i className='fa-solid fa-plus' />
       </Button>
     </div>

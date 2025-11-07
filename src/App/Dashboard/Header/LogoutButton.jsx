@@ -1,3 +1,5 @@
+/** @format */
+
 import Nav from 'react-bootstrap/Nav'
 import { useNavigate } from 'react-router'
 
@@ -12,7 +14,8 @@ export default function LogoutButton() {
         setData(null)
         setPassword('')
         navigate('/unlock')
-      }}>
+      }}
+    >
       <i className='fa-solid fa-arrow-right-from-bracket' /> Logout
     </Nav.Link>
   )

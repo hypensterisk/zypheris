@@ -1,3 +1,5 @@
+/** @format */
+
 import { useState } from 'react'
 import { Toast, ToastContainer, Nav } from 'react-bootstrap'
 
@@ -19,9 +21,7 @@ export default function ExportDatabaseButton() {
         types: [
           {
             description: 'Any kind of binary data',
-            accept: {
-              'application/octet-stream': ['.bin'],
-            },
+            accept: { 'application/octet-stream': ['.bin'] },
           },
         ],
       })
@@ -48,13 +48,17 @@ export default function ExportDatabaseButton() {
       <Nav.Link onClick={handleClick}>
         <i className='fa-solid fa-download' /> Export Database
       </Nav.Link>
-      <ToastContainer position='bottom-end' className='p-3'>
+      <ToastContainer
+        position='bottom-end'
+        className='p-3'
+      >
         <Toast
           show={toast.show}
           onClose={() => setToast((toast) => ({ ...toast, show: false }))}
           bg={toast.type}
           delay={3000}
-          autohide>
+          autohide
+        >
           <Toast.Header closeButton>
             <i
               className={`fa-solid fa-${toast.type === 'success' ? 'circle-check text-success' : 'triangle-exclamation text-danger'} me-1`}
