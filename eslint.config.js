@@ -1,5 +1,8 @@
+/** @format */
+
 import js from '@eslint/js'
 import { defineConfig, globalIgnores } from 'eslint/config'
+import prettier from 'eslint-config-prettier/flat'
 import pluginImport from 'eslint-plugin-import'
 import jsxA11y from 'eslint-plugin-jsx-a11y'
 import react from 'eslint-plugin-react'
@@ -18,20 +21,15 @@ export default defineConfig([
       reactHooks.configs.flat.recommended,
       jsxA11y.flatConfigs.recommended,
       pluginImport.flatConfigs.recommended,
+      prettier,
     ],
     languageOptions: {
       ecmaVersion: 'latest',
       sourceType: 'module',
-      globals: { ...globals.browser },
-      parserOptions: {
-        ecmaFeatures: {
-          jsx: true,
-        },
-      },
+      globals: { ...globals.browser, ...globals.node },
+      parserOptions: { ecmaFeatures: { jsx: true } },
     },
-    plugins: {
-      'unused-imports': unusedImports,
-    },
+    plugins: { 'unused-imports': unusedImports },
     rules: {
       'react/jsx-uses-react': 'error',
       'react/jsx-uses-vars': 'error',
@@ -74,8 +72,6 @@ export default defineConfig([
       'import/no-unresolved': 'off',
       'react/prop-types': 'off',
     },
-    settings: {
-      react: { version: 'detect' },
-    },
+    settings: { react: { version: 'detect' } },
   },
 ])
