@@ -1,6 +1,8 @@
+/** @format */
+
 import { useEffect } from 'react'
-import { Link, useNavigate } from 'react-router'
 import Button from 'react-bootstrap/Button'
+import { Link, useNavigate } from 'react-router'
 
 import useDatabaseStore from '../hooks/useDatabaseStore'
 
@@ -25,7 +27,12 @@ export default function Landing() {
         <h2 className='text-muted'>Zypheris is built for everyone</h2>
       </div>
       <div className='h-50 d-flex align-items-center justify-content-center'>
-        <Button as={Link} to='setup' variant='outline-light' size='lg'>
+        <Button
+          as={Link}
+          to='setup'
+          variant='outline-light'
+          size='lg'
+        >
           Get Started
         </Button>
       </div>

@@ -1,3 +1,5 @@
+/** @format */
+
 import Button from 'react-bootstrap/Button'
 import { Link } from 'react-router'
 
@@ -11,10 +13,18 @@ export default function SetupChoice() {
         </h2>
       </div>
       <div className='d-flex flex-column gap-2'>
-        <Button as={Link} to='create' variant='primary'>
+        <Button
+          as={Link}
+          to='create'
+          variant='primary'
+        >
           <i className='fa-solid fa-pencil' /> Create Database
         </Button>
-        <Button as={Link} to='upload' variant='success'>
+        <Button
+          as={Link}
+          to='upload'
+          variant='success'
+        >
           <i className='fa-solid fa-upload' /> Upload Database
         </Button>
       </div>

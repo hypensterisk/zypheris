@@ -1,13 +1,15 @@
-import { useState, useEffect } from 'react'
-import { useNavigate } from 'react-router'
-import { object, string } from 'yup'
+/** @format */
+
 import { AES, enc } from 'crypto-js'
 import { useFormik } from 'formik'
+import { useState, useEffect } from 'react'
 import Button from 'react-bootstrap/Button'
 import Form from 'react-bootstrap/Form'
 import InputGroup from 'react-bootstrap/InputGroup'
 import Modal from 'react-bootstrap/Modal'
+import { useNavigate } from 'react-router'
 import { useDebounce } from 'use-debounce'
+import { object, string } from 'yup'
 
 import useDatabaseStore from '../hooks/useDatabaseStore'
 import useNoBackNavigation from '../hooks/useNoBackNavigation.js'
@@ -31,9 +33,7 @@ export default function Unlock() {
     errors,
     touched,
   } = useFormik({
-    initialValues: {
-      password: '',
-    },
+    initialValues: { password: '' },
     validationSchema: object({
       password: string()
         .required('Please enter the password for the database')
@@ -71,7 +71,10 @@ export default function Unlock() {
           database.
         </h2>
       </div>
-      <Form onSubmit={handleSubmit} className='d-flex flex-column gap-2'>
+      <Form
+        onSubmit={handleSubmit}
+        className='d-flex flex-column gap-2'
+      >
         <InputGroup hasValidation>
           <InputGroup.Text>
             <i className='fa-solid fa-key' />
@@ -89,14 +92,19 @@ export default function Unlock() {
           <Button
             disabled={!database}
             onClick={() => setShow((show) => !show)}
-            variant='light'>
+            variant='light'
+          >
             <i className={`fa-solid fa-eye${show ? '' : '-slash'}`} />
           </Button>
           <Form.Control.Feedback type='invalid'>
             {errors.password}
           </Form.Control.Feedback>
         </InputGroup>
-        <Button disabled={!database} type='submit' variant='primary'>
+        <Button
+          disabled={!database}
+          type='submit'
+          variant='primary'
+        >
           <i
             className={`fa-solid fa-${database ? 'lock-open' : 'spinner fa-spin'}`}
           />{' '}
@@ -105,11 +113,16 @@ export default function Unlock() {
         <Button
           disabled={!database}
           onClick={() => setShowAlert(true)}
-          variant='outline-danger'>
+          variant='outline-danger'
+        >
           <i className='fa-solid fa-trash' /> Remove Database
         </Button>
       </Form>
-      <Modal centered show={showAlert} onHide={() => setShowAlert(false)}>
+      <Modal
+        centered
+        show={showAlert}
+        onHide={() => setShowAlert(false)}
+      >
         <Modal.Header closeButton>
           <Modal.Title>
             <i className='fa-solid fa-trash' />
@@ -129,10 +142,14 @@ export default function Unlock() {
               setDatabase(null)
               setName('')
               navigate('/setup')
-            }}>
+            }}
+          >
             Delete database
           </Button>
-          <Button variant='secondary' onClick={() => setShowAlert(false)}>
+          <Button
+            variant='secondary'
+            onClick={() => setShowAlert(false)}
+          >
             Cancel
           </Button>
         </Modal.Footer>

@@ -1,7 +1,9 @@
+/** @format */
+
+import { AES, enc } from 'crypto-js'
+import localforage from 'localforage'
 import { create } from 'zustand'
 import { persist, createJSONStorage } from 'zustand/middleware'
-import localforage from 'localforage'
-import { AES, enc } from 'crypto-js'
 
 const useDatabaseStore = create(
   persist((set, get) => ({

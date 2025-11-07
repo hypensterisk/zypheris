@@ -1,8 +1,10 @@
+/** @format */
+
 import { useState } from 'react'
-import { Link, useNavigate } from 'react-router'
 import Button from 'react-bootstrap/Button'
 import Form from 'react-bootstrap/Form'
 import InputGroup from 'react-bootstrap/InputGroup'
+import { Link, useNavigate } from 'react-router'
 
 import useDatabaseStore from '../../hooks/useDatabaseStore'
 
@@ -27,7 +29,10 @@ export default function Upload() {
           Please select the database file to be uploaded.
         </h2>
       </div>
-      <Form onSubmit={handleSubmit} className='d-flex flex-column gap-2'>
+      <Form
+        onSubmit={handleSubmit}
+        className='d-flex flex-column gap-2'
+      >
         <InputGroup>
           <Form.Control
             accept='*.db'
@@ -35,10 +40,19 @@ export default function Upload() {
             type='file'
           />
         </InputGroup>
-        <Button disabled={!file} type='submit' variant='success'>
+        <Button
+          disabled={!file}
+          type='submit'
+          variant='success'
+        >
           <i className='fa-solid fa-upload' /> Upload Database
         </Button>
-        <Button as={Link} to='..' path='relative' variant='outline-light'>
+        <Button
+          as={Link}
+          to='..'
+          path='relative'
+          variant='outline-light'
+        >
           <i className='fa-solid fa-arrow-left' /> Back
         </Button>
       </Form>

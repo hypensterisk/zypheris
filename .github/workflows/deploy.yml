@@ -1,3 +1,5 @@
+# @format
+
 name: Deploy to github page
 
 on:

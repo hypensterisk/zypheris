@@ -1,7 +1,9 @@
-import useNoBackNavigation from '../../hooks/useNoBackNavigation.js'
+/** @format */
+
+import Footer from './Footer/index.jsx'
 import Header from './Header/index.jsx'
 import Main from './Main/index.jsx'
-import Footer from './Footer/index.jsx'
+import useNoBackNavigation from '../../hooks/useNoBackNavigation.js'
 
 export default function Dashboard() {
   useNoBackNavigation()

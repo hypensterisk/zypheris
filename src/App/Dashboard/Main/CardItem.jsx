@@ -1,3 +1,5 @@
+/** @format */
+
 import { motion, useMotionValue, useTransform, animate } from 'framer-motion'
 import { Row, Col, Image, Button, ListGroup } from 'react-bootstrap'
 
@@ -23,7 +25,10 @@ export default function CardItem({ card, left, right }) {
     }
   }
   return (
-    <motion.div style={{ scale }} className='position-relative overflow-hidden'>
+    <motion.div
+      style={{ scale }}
+      className='position-relative overflow-hidden'
+    >
       <div className='position-absolute top-0 start-0 w-100 h-100 d-flex align-items-center justify-content-between'>
         <CardSwipeAction
           x={x}
@@ -31,9 +36,18 @@ export default function CardItem({ card, left, right }) {
           icon={left.icon}
           negate={false}
         />
-        <CardSwipeAction x={x} color={right.color} icon={right.icon} negate />
+        <CardSwipeAction
+          x={x}
+          color={right.color}
+          icon={right.icon}
+          negate
+        />
       </div>
-      <motion.div drag='x' style={{ x }} onDragEnd={handleDragEnd}>
+      <motion.div
+        drag='x'
+        style={{ x }}
+        onDragEnd={handleDragEnd}
+      >
         <ListGroup.Item className='py-3'>
           <Row className='align-items-center'>
             <Col xs='auto'>
@@ -61,7 +75,8 @@ export default function CardItem({ card, left, right }) {
                     ),
                   })
                 }
-                variant={card.isFavorite ? 'warning' : 'outline-light'}>
+                variant={card.isFavorite ? 'warning' : 'outline-light'}
+              >
                 <i
                   className={`fa-${card.isFavorite ? 'solid' : 'regular'} fa-star`}
                 />
@@ -88,8 +103,12 @@ function CardSwipeAction({ x, color, icon, negate }) {
   return (
     <motion.div
       style={{ width }}
-      className={`h-100 bg-${color} d-flex justify-content-center align-items-center`}>
-      <motion.i style={{ scale }} className={`fa-solid fa-2x fa-${icon}`} />
+      className={`h-100 bg-${color} d-flex justify-content-center align-items-center`}
+    >
+      <motion.i
+        style={{ scale }}
+        className={`fa-solid fa-2x fa-${icon}`}
+      />
     </motion.div>
   )
 }
