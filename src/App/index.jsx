@@ -9,7 +9,7 @@ import Unlock from './Unlock.jsx'
 
 export default function App() {
   return (
-    <BrowserRouter basename='/zypheris'>
+    <BrowserRouter basename={import.meta.env.BASE_URL}>
       <Routes>
         <Route
           index
