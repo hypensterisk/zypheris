@@ -139,6 +139,7 @@ export default function Main() {
                 isArchive: false,
                 isFavorite: false,
                 isTrash: false,
+                fields: [],
               },
             ],
           })

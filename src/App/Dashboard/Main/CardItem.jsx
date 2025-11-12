@@ -2,10 +2,12 @@
 
 import { motion, useMotionValue, useTransform, animate } from 'framer-motion'
 import { Row, Col, Image, Button, ListGroup } from 'react-bootstrap'
+import { useNavigate } from 'react-router'
 
 import useDatabaseStore from '../../../hooks/useDatabaseStore.js'
 
 export default function CardItem({ card, left, right }) {
+  const navigate = useNavigate()
   const data = useDatabaseStore((state) => state.data)
   const setData = useDatabaseStore((state) => state.setData)
 
@@ -26,6 +28,9 @@ export default function CardItem({ card, left, right }) {
   }
   return (
     <motion.div
+      onClick={() => {
+        navigate(`/card/${card.id}`)
+      }}
       style={{ scale }}
       className='position-relative overflow-hidden'
     >
@@ -66,7 +71,8 @@ export default function CardItem({ card, left, right }) {
             <Col xs='auto'>
               <Button
                 active
-                onClick={() =>
+                onClick={(event) => {
+                  event.stopPropagation()
                   setData({
                     cards: data.cards.map((value) =>
                       value.id === card.id
@@ -74,7 +80,7 @@ export default function CardItem({ card, left, right }) {
                         : value,
                     ),
                   })
-                }
+                }}
                 variant={card.isFavorite ? 'warning' : 'outline-light'}
               >
                 <i
