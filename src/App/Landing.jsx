@@ -1,25 +1,15 @@
 /** @format */
 
-import { useEffect } from 'react'
+import useRedirect from '@hooks/useRedirect'
 import Button from 'react-bootstrap/Button'
-import { Link, useNavigate } from 'react-router'
-
-import useDatabaseStore from '../hooks/useDatabaseStore'
+import { Link } from 'react-router'
 
 export default function Landing() {
-  const password = useDatabaseStore((state) => state.password)
-  const database = useDatabaseStore((state) => state.database)
-  const navigate = useNavigate()
-  useEffect(() => {
-    if (password !== '') {
-      navigate('/dashboard')
-      return
-    }
-    if (database !== null) {
-      navigate('/unlock')
-      return
-    }
-  }, [navigate, database, password])
+  useRedirect(({ database, data, password }, navigate) => {
+    if (data) return navigate('/dashboard')
+    if (database && !password) return navigate('/unlock')
+  })
+
   return (
     <div className='h-100 d-flex flex-column'>
       <div className='h-50 d-flex flex-column align-items-center justify-content-end'>
