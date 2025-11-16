@@ -38,6 +38,10 @@ const useDatabaseStore = create(
         const database = AES.encrypt(JSON.stringify(data), password).toString()
         return set({ data, database })
       },
+      hasHydrated: false,
+      setHasHydrated: (hasHydrated) => {
+        return set({ hasHydrated })
+      },
     }),
     {
       name: 'database',
@@ -47,6 +51,11 @@ const useDatabaseStore = create(
         database,
         password,
       }),
+      onRehydrateStorage: () => {
+        return (state) => {
+          state.setHasHydrated(true)
+        }
+      },
     },
   ),
 )
