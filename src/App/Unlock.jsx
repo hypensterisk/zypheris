@@ -7,7 +7,7 @@ import Button from 'react-bootstrap/Button'
 import Form from 'react-bootstrap/Form'
 import InputGroup from 'react-bootstrap/InputGroup'
 import Modal from 'react-bootstrap/Modal'
-import { useNavigate } from 'react-router'
+import { Navigate, useLocation } from 'react-router'
 import { useDebounce } from 'use-debounce'
 import { object, string } from 'yup'
 
@@ -16,6 +16,8 @@ import useNoBackNavigation from '../hooks/useNoBackNavigation.js'
 
 export default function Unlock() {
   useNoBackNavigation()
+  const location = useLocation()
+  const data = useDatabaseStore((state) => state.data)
   const setPassword = useDatabaseStore((state) => state.setPassword)
   const database = useDatabaseStore((state) => state.database)
   const setDatabase = useDatabaseStore((state) => state.setDatabase)
@@ -23,7 +25,6 @@ export default function Unlock() {
   const name = useDatabaseStore((state) => state.name)
   const [show, setShow] = useState(false)
   const [showAlert, setShowAlert] = useState(false)
-  const navigate = useNavigate()
   const {
     handleSubmit,
     validateForm,
@@ -50,13 +51,14 @@ export default function Unlock() {
     validateOnBlur: false,
     onSubmit: async ({ password }) => {
       setPassword(password)
-      navigate('/dashboard')
     },
   })
   const [password] = useDebounce(values.password, 200)
   useEffect(() => {
     validateForm(password)
   }, [password, validateForm])
+  if (data) return <Navigate to={location.state?.continue || '/dashboard'} />
+  if (!database) return <Navigate to='/setup' />
   return (
     <div className='h-100 d-flex flex-column justify-content-center align-items-center p-3 gap-4'>
       <div className='text-center'>
@@ -141,7 +143,6 @@ export default function Unlock() {
             onClick={() => {
               setDatabase(null)
               setName('')
-              navigate('/setup')
             }}
           >
             Delete database
