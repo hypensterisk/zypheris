@@ -53,6 +53,7 @@ const useDatabaseStore = create(
       }),
       onRehydrateStorage: () => {
         return (state) => {
+          state.setDatabase(state.database)
           state.setHasHydrated(true)
         }
       },
