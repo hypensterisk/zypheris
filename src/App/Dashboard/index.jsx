@@ -1,17 +1,21 @@
 /** @format */
 
-import Footer from './Footer/index.jsx'
-import Header from './Header/index.jsx'
-import Main from './Main/index.jsx'
-import useNoBackNavigation from '../../hooks/useNoBackNavigation.js'
+import { Routes, Route } from 'react-router'
+
+import Card from './Card/index.jsx'
+import Home from './Home/index.jsx'
 
 export default function Dashboard() {
-  useNoBackNavigation()
   return (
-    <div className='d-flex flex-column h-100'>
-      <Header />
-      <Main />
-      <Footer />
-    </div>
+    <Routes>
+      <Route
+        path='*'
+        element={<Home />}
+      />
+      <Route
+        path='card/:id/*'
+        element={<Card />}
+      />
+    </Routes>
   )
 }

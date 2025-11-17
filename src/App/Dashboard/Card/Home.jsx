@@ -8,7 +8,7 @@ import Form from 'react-bootstrap/Form'
 import Modal from 'react-bootstrap/Modal'
 import { useNavigate, useParams } from 'react-router'
 
-export default function Card() {
+export default function Home() {
   const { id } = useParams()
   const [card] = useCard(id)
   const navigate = useNavigate()
@@ -17,7 +17,7 @@ export default function Card() {
     navigate('/dashboard')
   }
   function handleEdit() {
-    navigate(`/card/${id}/edit`)
+    navigate(`/dashboard/card/${id}/edit`)
   }
 
   return (

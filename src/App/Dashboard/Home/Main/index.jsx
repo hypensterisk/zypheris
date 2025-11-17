@@ -1,11 +1,11 @@
 /** @format */
 
+import useDatabaseStore from '@hooks/useDatabaseStore.js'
 import { AnimatePresence } from 'framer-motion'
 import { ListGroup, Button } from 'react-bootstrap'
 import { useParams } from 'react-router'
 
 import CardItem from './CardItem.jsx'
-import useDatabaseStore from '../../../hooks/useDatabaseStore.js'
 
 export default function Main() {
   const { '*': splat } = useParams()
