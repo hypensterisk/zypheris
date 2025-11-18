@@ -34,9 +34,15 @@ const useDatabaseStore = create(
       },
       data: null,
       setData: (data) => {
-        const { password } = get()
-        const database = AES.encrypt(JSON.stringify(data), password).toString()
-        return set({ data, database })
+        if (data !== null) {
+          const { password } = get()
+          const database = AES.encrypt(
+            JSON.stringify(data),
+            password,
+          ).toString()
+          return set({ data, database })
+        }
+        return set({ data })
       },
       hasHydrated: false,
       setHasHydrated: (hasHydrated) => {
