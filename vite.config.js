@@ -1,11 +1,15 @@
 /** @format */
 
 import react from '@vitejs/plugin-react'
+import pluginEruda from '@zhaojjiang/vite-plugin-eruda'
 import path from 'node:path'
 import { defineConfig } from 'vite'
 
 export default defineConfig({
-  plugins: [react()],
+  plugins: [
+    react(),
+    pluginEruda({ enable: process.env.DEV, entry: 'src/index.jsx' }),
+  ],
   base: process.env.VITE_BASE,
   resolve: {
     alias: {
