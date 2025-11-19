@@ -15,7 +15,7 @@ export default function Header() {
       className='bg-body-tertiary'
     >
       <Container fluid>
-        <Navbar.Brand>Dashboard</Navbar.Brand>
+        <Navbar.Brand>Database</Navbar.Brand>
         <Navbar.Toggle className='px-3 py-2'>
           <i className='fa-solid fa-gear' />
         </Navbar.Toggle>

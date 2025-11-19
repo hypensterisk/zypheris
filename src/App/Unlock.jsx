@@ -57,7 +57,7 @@ export default function Unlock() {
   useEffect(() => {
     validateForm(password)
   }, [password, validateForm])
-  if (data) return <Navigate to={location.state?.continue || '/dashboard'} />
+  if (data) return <Navigate to={location.state?.continue || '/database'} />
   if (!database) return <Navigate to='/setup' />
   return (
     <div className='h-100 d-flex flex-column justify-content-center align-items-center p-3 gap-4'>

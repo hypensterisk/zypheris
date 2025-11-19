@@ -9,7 +9,7 @@ export default function Landing() {
   const password = useAppStore((state) => state.password)
   const database = useAppStore((state) => state.database)
   const data = useAppStore((state) => state.data)
-  if (data) return <Navigate to='/dashboard' />
+  if (data) return <Navigate to='/database' />
   if (database && !password) return <Navigate to='/unlock' />
   return (
     <div className='h-100 d-flex flex-column'>

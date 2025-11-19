@@ -16,10 +16,10 @@ export default function Home() {
   const navigate = useNavigate()
 
   function handleHide() {
-    navigate('/dashboard')
+    navigate('/database')
   }
   function handleEdit() {
-    navigate(`/dashboard/card/${id}/edit`)
+    navigate(`/database/card/${id}/edit`)
   }
 
   return (

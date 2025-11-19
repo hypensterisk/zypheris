@@ -6,7 +6,7 @@ import SplashScreen from '@components/SplashScreen'
 
 import useAppStore from '@hooks/useAppStore'
 
-import Dashboard from './Dashboard/index.jsx'
+import Database from './Database/index.jsx'
 import Landing from './Landing.jsx'
 import Setup from './Setup/index.jsx'
 import Unlock from './Unlock.jsx'
@@ -30,8 +30,8 @@ export default function App() {
           element={<Unlock />}
         />
         <Route
-          path='dashboard/*'
-          element={<Dashboard />}
+          path='database/*'
+          element={<Database />}
         />
       </Routes>
     </BrowserRouter>

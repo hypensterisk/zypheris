@@ -18,7 +18,7 @@ export default function NavigationTabs() {
         <Nav.Item>
           <Nav.Link
             as={Link}
-            to='/dashboard'
+            to='/database'
             eventKey=''
           >
             <i className='fa-solid fa-home' /> Home
@@ -27,7 +27,7 @@ export default function NavigationTabs() {
         <Nav.Item>
           <Nav.Link
             as={Link}
-            to='/dashboard/favorite'
+            to='/database/favorite'
             eventKey='favorite'
           >
             <i className='fa-solid fa-star' /> Favorite
@@ -36,7 +36,7 @@ export default function NavigationTabs() {
         <Nav.Item>
           <Nav.Link
             as={Link}
-            to='/dashboard/archive'
+            to='/database/archive'
             eventKey='archive'
           >
             <i className='fa-solid fa-archive' /> Archive
@@ -45,7 +45,7 @@ export default function NavigationTabs() {
         <Nav.Item>
           <Nav.Link
             as={Link}
-            to='/dashboard/trash'
+            to='/database/trash'
             eventKey='trash'
           >
             <i className='fa-solid fa-trash' /> Trash

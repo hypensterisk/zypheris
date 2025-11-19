@@ -7,7 +7,7 @@ import useAppStore from '@hooks/useAppStore'
 import Card from './Card/index.jsx'
 import Home from './Home/index.jsx'
 
-export default function Dashboard() {
+export default function Database() {
   const location = useLocation()
   const database = useAppStore((state) => state.database)
   const password = useAppStore((state) => state.password)

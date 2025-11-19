@@ -34,7 +34,7 @@ export default function Edit() {
     if (!isEqual) {
       setShow(true)
     } else {
-      navigate(`/dashboard/card/${card.id}`)
+      navigate(`/database/card/${card.id}`)
     }
   }
   const { title, website, ...fields } = values
@@ -158,7 +158,7 @@ export default function Edit() {
           <Button
             variant='danger'
             onClick={() => {
-              navigate(`/dashboard/card/${card.id}`)
+              navigate(`/database/card/${card.id}`)
             }}
           >
             {'Discard changes'}

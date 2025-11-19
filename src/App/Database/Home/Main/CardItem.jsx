@@ -29,7 +29,7 @@ export default function CardItem({ card, left, right }) {
   return (
     <motion.div
       onClick={() => {
-        navigate(`/dashboard/card/${card.id}`)
+        navigate(`/database/card/${card.id}`)
       }}
       style={{ scale }}
       className='position-relative overflow-hidden'
