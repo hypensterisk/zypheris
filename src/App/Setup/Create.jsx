@@ -12,7 +12,7 @@ import { Link } from 'react-router'
 import { useDebounce } from 'use-debounce'
 import { object, string } from 'yup'
 
-import useAppStore from '../../hooks/useAppStore.js'
+import useAppStore from '../../hooks/useAppStore'
 
 export default function Create() {
   const setName = useAppStore((state) => state.setName)

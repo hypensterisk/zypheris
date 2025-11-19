@@ -4,10 +4,10 @@ import { Routes, Route, Navigate } from 'react-router'
 
 import useAppStore from '@hooks/useAppStore'
 
-import Create from './Create.jsx'
-import SetupChoice from './SetupChoice.jsx'
-import Upload from './Upload.jsx'
-import useNoBackNavigation from '../../hooks/useNoBackNavigation.js'
+import Create from './Create'
+import SetupChoice from './SetupChoice'
+import Upload from './Upload'
+import useNoBackNavigation from '../../hooks/useNoBackNavigation'
 
 export default function Setup() {
   useNoBackNavigation()

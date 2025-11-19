@@ -5,8 +5,8 @@ import Nav from 'react-bootstrap/Nav'
 import Navbar from 'react-bootstrap/Navbar'
 import Offcanvas from 'react-bootstrap/Offcanvas'
 
-import ExportDatabaseButton from './ExportDatabaseButton.jsx'
-import LogoutButton from './LogoutButton.jsx'
+import ExportDatabaseButton from './ExportDatabaseButton'
+import LogoutButton from './LogoutButton'
 
 export default function Header() {
   return (

@@ -12,7 +12,7 @@ import { useDebounce } from 'use-debounce'
 import { object, string } from 'yup'
 
 import useAppStore from '../hooks/useAppStore'
-import useNoBackNavigation from '../hooks/useNoBackNavigation.js'
+import useNoBackNavigation from '../hooks/useNoBackNavigation'
 
 export default function Unlock() {
   useNoBackNavigation()

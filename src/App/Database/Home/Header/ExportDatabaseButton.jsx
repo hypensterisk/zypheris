@@ -3,7 +3,7 @@
 import { useState } from 'react'
 import { Toast, ToastContainer, Nav } from 'react-bootstrap'
 
-import useAppStore from '@hooks/useAppStore.js'
+import useAppStore from '@hooks/useAppStore'
 
 export default function ExportDatabaseButton() {
   const [toast, setToast] = useState({

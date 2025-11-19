@@ -4,8 +4,8 @@ import { Routes, Route, Navigate, useLocation } from 'react-router'
 
 import useAppStore from '@hooks/useAppStore'
 
-import Card from './Card/index.jsx'
-import Home from './Home/index.jsx'
+import Card from './Card'
+import Home from './Home'
 
 export default function Database() {
   const location = useLocation()

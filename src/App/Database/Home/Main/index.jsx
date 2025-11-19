@@ -4,9 +4,9 @@ import { AnimatePresence } from 'framer-motion'
 import { ListGroup, Button } from 'react-bootstrap'
 import { useParams } from 'react-router'
 
-import useAppStore from '@hooks/useAppStore.js'
+import useAppStore from '@hooks/useAppStore'
 
-import CardItem from './CardItem.jsx'
+import CardItem from './CardItem'
 
 export default function Main() {
   const { '*': splat } = useParams()

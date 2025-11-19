@@ -6,10 +6,10 @@ import SplashScreen from '@components/SplashScreen'
 
 import useAppStore from '@hooks/useAppStore'
 
-import Database from './Database/index.jsx'
-import Landing from './Landing.jsx'
-import Setup from './Setup/index.jsx'
-import Unlock from './Unlock.jsx'
+import Database from './Database'
+import Landing from './Landing'
+import Setup from './Setup'
+import Unlock from './Unlock'
 
 export default function App() {
   const hasHydrated = useAppStore((state) => state.hasHydrated)

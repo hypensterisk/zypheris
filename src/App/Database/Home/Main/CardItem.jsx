@@ -4,7 +4,7 @@ import { motion, useMotionValue, useTransform, animate } from 'framer-motion'
 import { Row, Col, Image, Button, ListGroup } from 'react-bootstrap'
 import { useNavigate } from 'react-router'
 
-import useAppStore from '@hooks/useAppStore.js'
+import useAppStore from '@hooks/useAppStore'
 
 export default function CardItem({ card, left, right }) {
   const navigate = useNavigate()

@@ -1,10 +1,10 @@
 /** @format */
 
-import useNoBackNavigation from '@hooks/useNoBackNavigation.js'
+import useNoBackNavigation from '@hooks/useNoBackNavigation'
 
-import Footer from './Footer/index.jsx'
-import Header from './Header/index.jsx'
-import Main from './Main/index.jsx'
+import Footer from './Footer'
+import Header from './Header'
+import Main from './Main'
 
 export default function Home() {
   useNoBackNavigation()
