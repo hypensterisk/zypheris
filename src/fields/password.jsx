@@ -45,11 +45,7 @@ function Edit({ name, value, setValue, error, onChange, handleRemove }) {
     </EditInputGroup>
   )
 }
-const defaultValue = String.fromCharCode(
-  ...Array(16)
-    .fill()
-    .map(() => 31 + Math.floor(Math.random() * 95)),
-)
+const defaultValue = ''
 const type = 'Password'
 const validationSchema = string().required('Password is required')
 

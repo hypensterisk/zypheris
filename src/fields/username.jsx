@@ -33,7 +33,7 @@ function Edit({ name, value, setValue, error, onChange, handleRemove }) {
     </EditInputGroup>
   )
 }
-const defaultValue = 'hypensterisk'
+const defaultValue = 'quux'
 const type = 'Username'
 const validationSchema = string().required()
 

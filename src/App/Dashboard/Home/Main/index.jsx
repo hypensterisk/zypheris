@@ -134,8 +134,8 @@ export default function Main() {
               ...data.cards,
               {
                 id: crypto.randomUUID(),
-                title: 'google/example.com',
-                website: 'www.google.com',
+                title: 'google/quux',
+                website: 'https://www.google.com/',
                 isArchive: false,
                 isFavorite: false,
                 isTrash: false,

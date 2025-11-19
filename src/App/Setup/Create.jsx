@@ -45,7 +45,7 @@ export default function Create() {
         password,
       ).toString()
       setDatabase(database)
-      setName(name)
+      setName(name + '.db')
     },
   })
   const [password] = useDebounce(values.password, 200)
