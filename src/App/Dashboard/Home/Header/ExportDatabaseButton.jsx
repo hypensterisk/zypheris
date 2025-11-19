@@ -3,7 +3,7 @@
 import { useState } from 'react'
 import { Toast, ToastContainer, Nav } from 'react-bootstrap'
 
-import useDatabaseStore from '@hooks/useDatabaseStore.js'
+import useAppStore from '@hooks/useAppStore.js'
 
 export default function ExportDatabaseButton() {
   const [toast, setToast] = useState({
@@ -11,8 +11,8 @@ export default function ExportDatabaseButton() {
     message: '',
     type: 'success',
   })
-  const database = useDatabaseStore((state) => state.database)
-  const name = useDatabaseStore((state) => state.name)
+  const database = useAppStore((state) => state.database)
+  const name = useAppStore((state) => state.name)
   async function handleClick() {
     try {
       const fileHandle = await window.showSaveFilePicker({

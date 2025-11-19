@@ -12,11 +12,11 @@ import { Link } from 'react-router'
 import { useDebounce } from 'use-debounce'
 import { object, string } from 'yup'
 
-import useDatabaseStore from '../../hooks/useDatabaseStore.js'
+import useAppStore from '../../hooks/useAppStore.js'
 
 export default function Create() {
-  const setName = useDatabaseStore((state) => state.setName)
-  const setDatabase = useDatabaseStore((state) => state.setDatabase)
+  const setName = useAppStore((state) => state.setName)
+  const setDatabase = useAppStore((state) => state.setDatabase)
   const pm = useMemo(() => new PasswordMeter(), [])
   const [show, setShow] = useState(false)
   const {

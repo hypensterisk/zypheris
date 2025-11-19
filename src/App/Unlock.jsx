@@ -11,18 +11,18 @@ import { Navigate, useLocation } from 'react-router'
 import { useDebounce } from 'use-debounce'
 import { object, string } from 'yup'
 
-import useDatabaseStore from '../hooks/useDatabaseStore'
+import useAppStore from '../hooks/useAppStore'
 import useNoBackNavigation from '../hooks/useNoBackNavigation.js'
 
 export default function Unlock() {
   useNoBackNavigation()
   const location = useLocation()
-  const data = useDatabaseStore((state) => state.data)
-  const setPassword = useDatabaseStore((state) => state.setPassword)
-  const database = useDatabaseStore((state) => state.database)
-  const setDatabase = useDatabaseStore((state) => state.setDatabase)
-  const setName = useDatabaseStore((state) => state.setName)
-  const name = useDatabaseStore((state) => state.name)
+  const data = useAppStore((state) => state.data)
+  const setPassword = useAppStore((state) => state.setPassword)
+  const database = useAppStore((state) => state.database)
+  const setDatabase = useAppStore((state) => state.setDatabase)
+  const setName = useAppStore((state) => state.setName)
+  const name = useAppStore((state) => state.name)
   const [show, setShow] = useState(false)
   const [showAlert, setShowAlert] = useState(false)
   const {

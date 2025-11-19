@@ -6,11 +6,11 @@ import Form from 'react-bootstrap/Form'
 import InputGroup from 'react-bootstrap/InputGroup'
 import { Link } from 'react-router'
 
-import useDatabaseStore from '../../hooks/useDatabaseStore'
+import useAppStore from '../../hooks/useAppStore'
 
 export default function Upload() {
-  const setDatabase = useDatabaseStore((state) => state.setDatabase)
-  const setName = useDatabaseStore((state) => state.setName)
+  const setDatabase = useAppStore((state) => state.setDatabase)
+  const setName = useAppStore((state) => state.setName)
   const [file, setFile] = useState(null)
   async function handleSubmit(e) {
     e.preventDefault()

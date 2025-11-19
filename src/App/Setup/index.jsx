@@ -2,7 +2,7 @@
 
 import { Routes, Route, Navigate } from 'react-router'
 
-import useDatabaseStore from '@hooks/useDatabaseStore'
+import useAppStore from '@hooks/useAppStore'
 
 import Create from './Create.jsx'
 import SetupChoice from './SetupChoice.jsx'
@@ -11,9 +11,9 @@ import useNoBackNavigation from '../../hooks/useNoBackNavigation.js'
 
 export default function Setup() {
   useNoBackNavigation()
-  const data = useDatabaseStore((state) => state.data)
-  const database = useDatabaseStore((state) => state.database)
-  const password = useDatabaseStore((state) => state.password)
+  const data = useAppStore((state) => state.data)
+  const database = useAppStore((state) => state.database)
+  const password = useAppStore((state) => state.password)
   if (data) return <Navigate to='/dashboard' />
   if (database && !password) return <Navigate to='/unlock' />
   return (

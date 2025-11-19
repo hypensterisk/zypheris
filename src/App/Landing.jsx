@@ -3,12 +3,12 @@
 import Button from 'react-bootstrap/Button'
 import { Link, Navigate } from 'react-router'
 
-import useDatabaseStore from '@hooks/useDatabaseStore'
+import useAppStore from '@hooks/useAppStore'
 
 export default function Landing() {
-  const password = useDatabaseStore((state) => state.password)
-  const database = useDatabaseStore((state) => state.database)
-  const data = useDatabaseStore((state) => state.data)
+  const password = useAppStore((state) => state.password)
+  const database = useAppStore((state) => state.database)
+  const data = useAppStore((state) => state.data)
   if (data) return <Navigate to='/dashboard' />
   if (database && !password) return <Navigate to='/unlock' />
   return (

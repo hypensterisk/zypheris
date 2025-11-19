@@ -2,10 +2,10 @@
 
 import Nav from 'react-bootstrap/Nav'
 
-import useDatabaseStore from '@hooks/useDatabaseStore.js'
+import useAppStore from '@hooks/useAppStore.js'
 
 export default function LogoutButton() {
-  const { setData, setPassword } = useDatabaseStore((state) => state)
+  const { setData, setPassword } = useAppStore((state) => state)
   return (
     <Nav.Link
       onClick={() => {

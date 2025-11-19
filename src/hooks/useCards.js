@@ -1,10 +1,10 @@
 /** @format */
 
-import useDatabaseStore from '@hooks/useDatabaseStore'
+import useAppStore from '@hooks/useAppStore'
 
 export default function useCards() {
-  const data = useDatabaseStore((state) => state.data)
-  const setData = useDatabaseStore((state) => state.setData)
+  const data = useAppStore((state) => state.data)
+  const setData = useAppStore((state) => state.setData)
   const cards = data.cards
   function setCards(cards) {
     setData({ ...data, cards })

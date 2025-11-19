@@ -4,14 +4,14 @@ import { AnimatePresence } from 'framer-motion'
 import { ListGroup, Button } from 'react-bootstrap'
 import { useParams } from 'react-router'
 
-import useDatabaseStore from '@hooks/useDatabaseStore.js'
+import useAppStore from '@hooks/useAppStore.js'
 
 import CardItem from './CardItem.jsx'
 
 export default function Main() {
   const { '*': splat } = useParams()
-  const data = useDatabaseStore((state) => state.data)
-  const setData = useDatabaseStore((state) => state.setData)
+  const data = useAppStore((state) => state.data)
+  const setData = useAppStore((state) => state.setData)
   return (
     <div className='h-100 position-relative'>
       <AnimatePresence>

@@ -4,12 +4,12 @@ import { motion, useMotionValue, useTransform, animate } from 'framer-motion'
 import { Row, Col, Image, Button, ListGroup } from 'react-bootstrap'
 import { useNavigate } from 'react-router'
 
-import useDatabaseStore from '@hooks/useDatabaseStore.js'
+import useAppStore from '@hooks/useAppStore.js'
 
 export default function CardItem({ card, left, right }) {
   const navigate = useNavigate()
-  const data = useDatabaseStore((state) => state.data)
-  const setData = useDatabaseStore((state) => state.setData)
+  const data = useAppStore((state) => state.data)
+  const setData = useAppStore((state) => state.setData)
 
   const x = useMotionValue(0)
   const scale = useMotionValue(1)
