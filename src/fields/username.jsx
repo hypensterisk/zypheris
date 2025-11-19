@@ -1,9 +1,10 @@
 /** @format */
 
+import { string } from 'yup'
+
 import BaseButton from '@components/BaseButton'
 import EditInputGroup from '@components/EditInputGroup'
 import ViewInputGroup from '@components/ViewInputGroup'
-import { string } from 'yup'
 
 function View({ value }) {
   return (

@@ -1,8 +1,9 @@
 /** @format */
 
-import useDatabaseStore from '@hooks/useDatabaseStore'
 import Button from 'react-bootstrap/Button'
 import { Link, Navigate } from 'react-router'
+
+import useDatabaseStore from '@hooks/useDatabaseStore'
 
 export default function Landing() {
   const password = useDatabaseStore((state) => state.password)

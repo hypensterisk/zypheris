@@ -1,9 +1,10 @@
 /** @format */
 
-import useDatabaseStore from '@hooks/useDatabaseStore.js'
 import { motion, useMotionValue, useTransform, animate } from 'framer-motion'
 import { Row, Col, Image, Button, ListGroup } from 'react-bootstrap'
 import { useNavigate } from 'react-router'
+
+import useDatabaseStore from '@hooks/useDatabaseStore.js'
 
 export default function CardItem({ card, left, right }) {
   const navigate = useNavigate()

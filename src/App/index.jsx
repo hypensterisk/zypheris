@@ -1,8 +1,10 @@
 /** @format */
 
-import SplashScreen from '@components/SplashScreen'
-import useDatabaseStore from '@hooks/useDatabaseStore'
 import { BrowserRouter, Routes, Route } from 'react-router'
+
+import SplashScreen from '@components/SplashScreen'
+
+import useDatabaseStore from '@hooks/useDatabaseStore'
 
 import Dashboard from './Dashboard/index.jsx'
 import Landing from './Landing.jsx'

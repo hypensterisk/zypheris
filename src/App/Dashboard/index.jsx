@@ -1,7 +1,8 @@
 /** @format */
 
-import useDatabaseStore from '@hooks/useDatabaseStore'
 import { Routes, Route, Navigate, useLocation } from 'react-router'
+
+import useDatabaseStore from '@hooks/useDatabaseStore'
 
 import Card from './Card/index.jsx'
 import Home from './Home/index.jsx'

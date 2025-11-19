@@ -1,11 +1,12 @@
 /** @format */
 
+import { useState } from 'react'
+import { string } from 'yup'
+
 import BaseButton from '@components/BaseButton'
 import EditInputGroup from '@components/EditInputGroup'
 import StateButton, { State } from '@components/StateButton'
 import ViewInputGroup from '@components/ViewInputGroup'
-import { useState } from 'react'
-import { string } from 'yup'
 
 function View({ value }) {
   const [toggled, setToggled] = useState(false)

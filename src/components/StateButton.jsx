@@ -1,7 +1,8 @@
 /** @format */
 
-import BaseButton from '@components/BaseButton'
 import { Children, isValidElement } from 'react'
+
+import BaseButton from '@components/BaseButton'
 
 export default function StateButton({ index, children, ...props }) {
   const states = Children.toArray(children)

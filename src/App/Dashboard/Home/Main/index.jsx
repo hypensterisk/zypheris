@@ -1,9 +1,10 @@
 /** @format */
 
-import useDatabaseStore from '@hooks/useDatabaseStore.js'
 import { AnimatePresence } from 'framer-motion'
 import { ListGroup, Button } from 'react-bootstrap'
 import { useParams } from 'react-router'
+
+import useDatabaseStore from '@hooks/useDatabaseStore.js'
 
 import CardItem from './CardItem.jsx'
 

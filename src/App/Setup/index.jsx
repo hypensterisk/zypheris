@@ -1,7 +1,8 @@
 /** @format */
 
-import useDatabaseStore from '@hooks/useDatabaseStore'
 import { Routes, Route, Navigate } from 'react-router'
+
+import useDatabaseStore from '@hooks/useDatabaseStore'
 
 import Create from './Create.jsx'
 import SetupChoice from './SetupChoice.jsx'
