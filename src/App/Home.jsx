@@ -5,7 +5,7 @@ import { Link, Navigate } from 'react-router'
 
 import useAppStore from '@hooks/useAppStore'
 
-export default function Landing() {
+export default function Home() {
   const password = useAppStore((state) => state.password)
   const database = useAppStore((state) => state.database)
   const data = useAppStore((state) => state.data)

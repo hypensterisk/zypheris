@@ -7,7 +7,7 @@ import SplashScreen from '@components/SplashScreen'
 import useAppStore from '@hooks/useAppStore'
 
 import Database from './Database'
-import Landing from './Landing'
+import Home from './Home'
 import Setup from './Setup'
 import Unlock from './Unlock'
 
@@ -19,7 +19,7 @@ export default function App() {
       <Routes>
         <Route
           index
-          element={<Landing />}
+          element={<Home />}
         />
         <Route
           path='setup/*'
