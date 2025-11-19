@@ -1,9 +1,8 @@
 /** @format */
 
+import useDatabaseStore from '@hooks/useDatabaseStore.js'
 import { useState } from 'react'
 import { Toast, ToastContainer, Nav } from 'react-bootstrap'
-
-import useDatabaseStore from '../../../hooks/useDatabaseStore.js'
 
 export default function ExportDatabaseButton() {
   const [toast, setToast] = useState({
@@ -12,12 +11,13 @@ export default function ExportDatabaseButton() {
     type: 'success',
   })
   const database = useDatabaseStore((state) => state.database)
+  const name = useDatabaseStore((state) => state.name)
   async function handleClick() {
     try {
       const fileHandle = await window.showSaveFilePicker({
         id: 'backup',
         startIn: 'documents',
-        suggestedName: 'database.bin',
+        suggestedName: name,
         types: [
           {
             description: 'Any kind of binary data',

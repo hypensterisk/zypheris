@@ -1,5 +1,7 @@
 /** @format */
 
+import SplashScreen from '@components/SplashScreen'
+import useDatabaseStore from '@hooks/useDatabaseStore'
 import { BrowserRouter, Routes, Route } from 'react-router'
 
 import Dashboard from './Dashboard/index.jsx'
@@ -8,8 +10,10 @@ import Setup from './Setup/index.jsx'
 import Unlock from './Unlock.jsx'
 
 export default function App() {
+  const hasHydrated = useDatabaseStore((state) => state.hasHydrated)
+  if (!hasHydrated) return <SplashScreen />
   return (
-    <BrowserRouter basename='/zypheris'>
+    <BrowserRouter basename={import.meta.env.BASE_URL}>
       <Routes>
         <Route
           index

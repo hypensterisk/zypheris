@@ -4,7 +4,7 @@ import { useState } from 'react'
 import Button from 'react-bootstrap/Button'
 import Form from 'react-bootstrap/Form'
 import InputGroup from 'react-bootstrap/InputGroup'
-import { Link, useNavigate } from 'react-router'
+import { Link } from 'react-router'
 
 import useDatabaseStore from '../../hooks/useDatabaseStore'
 
@@ -12,13 +12,11 @@ export default function Upload() {
   const setDatabase = useDatabaseStore((state) => state.setDatabase)
   const setName = useDatabaseStore((state) => state.setName)
   const [file, setFile] = useState(null)
-  const navigate = useNavigate()
   async function handleSubmit(e) {
     e.preventDefault()
     if (file !== null) {
       setDatabase(await file.text())
       setName(file.name)
-      navigate('/unlock')
     }
   }
   return (

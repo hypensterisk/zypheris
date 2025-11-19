@@ -8,7 +8,7 @@ import Button from 'react-bootstrap/Button'
 import Form from 'react-bootstrap/Form'
 import InputGroup from 'react-bootstrap/InputGroup'
 import ProgressBar from 'react-bootstrap/ProgressBar'
-import { Link, useNavigate } from 'react-router'
+import { Link } from 'react-router'
 import { useDebounce } from 'use-debounce'
 import { object, string } from 'yup'
 
@@ -19,7 +19,6 @@ export default function Create() {
   const setDatabase = useDatabaseStore((state) => state.setDatabase)
   const pm = useMemo(() => new PasswordMeter(), [])
   const [show, setShow] = useState(false)
-  const navigate = useNavigate()
   const {
     handleSubmit,
     validateForm,
@@ -46,8 +45,7 @@ export default function Create() {
         password,
       ).toString()
       setDatabase(database)
-      setName(name)
-      navigate('/unlock')
+      setName(name + '.db')
     },
   })
   const [password] = useDebounce(values.password, 200)

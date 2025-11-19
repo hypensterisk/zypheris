@@ -1,11 +1,11 @@
 /** @format */
 
+import useDatabaseStore from '@hooks/useDatabaseStore.js'
 import { AnimatePresence } from 'framer-motion'
 import { ListGroup, Button } from 'react-bootstrap'
 import { useParams } from 'react-router'
 
 import CardItem from './CardItem.jsx'
-import useDatabaseStore from '../../../hooks/useDatabaseStore.js'
 
 export default function Main() {
   const { '*': splat } = useParams()
@@ -134,11 +134,12 @@ export default function Main() {
               ...data.cards,
               {
                 id: crypto.randomUUID(),
-                title: 'google/example.com',
-                website: 'www.google.com',
+                title: 'google/quux',
+                website: 'https://www.google.com/',
                 isArchive: false,
                 isFavorite: false,
                 isTrash: false,
+                fields: [],
               },
             ],
           })

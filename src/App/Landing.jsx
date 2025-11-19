@@ -1,25 +1,15 @@
 /** @format */
 
-import { useEffect } from 'react'
+import useDatabaseStore from '@hooks/useDatabaseStore'
 import Button from 'react-bootstrap/Button'
-import { Link, useNavigate } from 'react-router'
-
-import useDatabaseStore from '../hooks/useDatabaseStore'
+import { Link, Navigate } from 'react-router'
 
 export default function Landing() {
   const password = useDatabaseStore((state) => state.password)
   const database = useDatabaseStore((state) => state.database)
-  const navigate = useNavigate()
-  useEffect(() => {
-    if (password !== '') {
-      navigate('/dashboard')
-      return
-    }
-    if (database !== null) {
-      navigate('/unlock')
-      return
-    }
-  }, [navigate, database, password])
+  const data = useDatabaseStore((state) => state.data)
+  if (data) return <Navigate to='/dashboard' />
+  if (database && !password) return <Navigate to='/unlock' />
   return (
     <div className='h-100 d-flex flex-column'>
       <div className='h-50 d-flex flex-column align-items-center justify-content-end'>
