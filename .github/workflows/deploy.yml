@@ -32,6 +32,9 @@ jobs:
         env:
           VITE_BASE: '/zypheris/'
 
+      - name: Create 404 GitHub Pages fallback
+        run: cp dist/index.html dist/404.html
+
       - name: Deploy to github page
         uses: peaceiris/actions-gh-pages@v4
         with:
