@@ -9,8 +9,20 @@ export default function Home() {
   const password = useAppStore((state) => state.password)
   const database = useAppStore((state) => state.database)
   const data = useAppStore((state) => state.data)
-  if (data) return <Navigate to='/database' />
-  if (database && !password) return <Navigate to='/unlock' />
+  if (data)
+    return (
+      <Navigate
+        to='/database'
+        replace={true}
+      />
+    )
+  if (database && !password)
+    return (
+      <Navigate
+        to='/unlock'
+        replace={true}
+      />
+    )
   return (
     <div className='h-100 d-flex flex-column'>
       <div className='h-50 d-flex flex-column align-items-center justify-content-end'>
@@ -21,6 +33,7 @@ export default function Home() {
         <Button
           as={Link}
           to='setup'
+          replace={true}
           variant='outline-light'
           size='lg'
         >

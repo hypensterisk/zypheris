@@ -55,8 +55,20 @@ export default function Unlock() {
   useEffect(() => {
     validateForm(password)
   }, [password, validateForm])
-  if (data) return <Navigate to={location.state?.continue || '/database'} />
-  if (!database) return <Navigate to='/setup' />
+  if (data)
+    return (
+      <Navigate
+        to={location.state?.continue || '/database'}
+        replace={true}
+      />
+    )
+  if (!database)
+    return (
+      <Navigate
+        to='/setup'
+        replace={true}
+      />
+    )
   return (
     <div className='h-100 d-flex flex-column justify-content-center align-items-center p-3 gap-4'>
       <div className='text-center'>

@@ -11,12 +11,19 @@ export default function Database() {
   const location = useLocation()
   const database = useAppStore((state) => state.database)
   const password = useAppStore((state) => state.password)
-  if (!database) return <Navigate to='/setup' />
+  if (!database)
+    return (
+      <Navigate
+        to='/setup'
+        replace={true}
+      />
+    )
   if (!password)
     return (
       <Navigate
         to='/unlock'
         state={{ continue: location.pathname }}
+        replace={true}
       />
     )
   return (

@@ -12,8 +12,20 @@ export default function Setup() {
   const data = useAppStore((state) => state.data)
   const database = useAppStore((state) => state.database)
   const password = useAppStore((state) => state.password)
-  if (data) return <Navigate to='/database' />
-  if (database && !password) return <Navigate to='/unlock' />
+  if (data)
+    return (
+      <Navigate
+        to='/database'
+        replace={true}
+      />
+    )
+  if (database && !password)
+    return (
+      <Navigate
+        to='/unlock'
+        replace={true}
+      />
+    )
   return (
     <Routes>
       <Route

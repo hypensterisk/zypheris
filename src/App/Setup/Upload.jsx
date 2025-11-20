@@ -47,8 +47,7 @@ export default function Upload() {
         </Button>
         <Button
           as={Link}
-          to='..'
-          path='relative'
+          to={-1}
           variant='outline-light'
         >
           <i className='fa-solid fa-arrow-left' /> Back
