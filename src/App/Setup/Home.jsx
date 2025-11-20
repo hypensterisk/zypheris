@@ -3,7 +3,7 @@
 import Button from 'react-bootstrap/Button'
 import { Link } from 'react-router'
 
-export default function SetupChoice() {
+export default function Home() {
   return (
     <div className='h-100 d-flex flex-column justify-content-center align-items-center p-3 gap-4'>
       <div className='text-center'>

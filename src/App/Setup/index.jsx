@@ -5,7 +5,7 @@ import { Routes, Route, Navigate } from 'react-router'
 import useAppStore from '@hooks/useAppStore'
 
 import Create from './Create'
-import SetupChoice from './SetupChoice'
+import Home from './Home'
 import Upload from './Upload'
 
 export default function Setup() {
@@ -30,7 +30,7 @@ export default function Setup() {
     <Routes>
       <Route
         index
-        element={<SetupChoice />}
+        element={<Home />}
       />
       <Route
         path='create'
