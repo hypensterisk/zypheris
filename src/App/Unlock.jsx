@@ -12,10 +12,8 @@ import { useDebounce } from 'use-debounce'
 import { object, string } from 'yup'
 
 import useAppStore from '../hooks/useAppStore'
-import useNoBackNavigation from '../hooks/useNoBackNavigation'
 
 export default function Unlock() {
-  useNoBackNavigation()
   const location = useLocation()
   const data = useAppStore((state) => state.data)
   const setPassword = useAppStore((state) => state.setPassword)
