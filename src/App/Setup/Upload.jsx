@@ -1,24 +1,35 @@
 /** @format */
 
-import { useState } from 'react'
+import { useState, useCallback } from 'react'
 import Button from 'react-bootstrap/Button'
 import Form from 'react-bootstrap/Form'
 import InputGroup from 'react-bootstrap/InputGroup'
 import { Link } from 'react-router'
 
-import useAppStore from '../../hooks/useAppStore'
+import useAppStore from '@hooks/useAppStore'
 
 export default function Upload() {
-  const setDatabase = useAppStore((state) => state.setDatabase)
-  const setName = useAppStore((state) => state.setName)
   const [file, setFile] = useState(null)
-  async function handleSubmit(e) {
-    e.preventDefault()
-    if (file !== null) {
-      setDatabase(await file.text())
-      setName(file.name)
-    }
-  }
+  const setName = useAppStore((state) => state.setName)
+  const setDatabase = useAppStore((state) => state.setDatabase)
+  const handleSubmit = useCallback(
+    async (event) => {
+      event.preventDefault()
+      if (!file) return
+      const name = file.name
+      const database = await file.text()
+      setName(name)
+      setDatabase(database)
+    },
+    [file, setName, setDatabase],
+  )
+  const handleChange = useCallback(
+    (event) => {
+      const file = event.target.files.at(0)
+      setFile(file)
+    },
+    [setFile],
+  )
   return (
     <div className='h-100 d-flex flex-column justify-content-center align-items-center p-3 gap-4'>
       <div className='text-center'>
@@ -33,8 +44,8 @@ export default function Upload() {
       >
         <InputGroup>
           <Form.Control
-            accept='*.db'
-            onChange={({ target }) => setFile(target.files[0])}
+            accept='.zyp'
+            onChange={handleChange}
             type='file'
           />
         </InputGroup>
