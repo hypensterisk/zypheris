@@ -1,155 +1,59 @@
 /** @format */
 
-import { AnimatePresence } from 'framer-motion'
-import { ListGroup, Button } from 'react-bootstrap'
-import { useParams } from 'react-router'
+import ListGroup from 'react-bootstrap/ListGroup'
+import { useSearchParams } from 'react-router'
 
 import useAppStore from '@hooks/useAppStore'
 
 import CardItem from './CardItem'
 
 export default function Main() {
-  const { '*': splat } = useParams()
+  const [searchParams] = useSearchParams()
+  const tab = searchParams.get('tab')
   const data = useAppStore((state) => state.data)
   const setData = useAppStore((state) => state.setData)
+  const cards = data.cards.filter((card) => {
+    const { isFavorite, isArchive, isTrash } = card
+    if (tab === 'home') {
+      return !isArchive && !isTrash
+    }
+    if (tab === 'favorite') {
+      return isFavorite && !isTrash && !isArchive
+    }
+    if (tab === 'archive') {
+      return isArchive && !isTrash
+    }
+    if (tab === 'trash') {
+      return isTrash
+    }
+    return false
+  })
+  function updateCard(id, partialUpdate) {
+    setData({
+      ...data,
+      cards: data.cards.map((card) =>
+        card.id === id ? { ...card, ...partialUpdate } : card,
+      ),
+    })
+  }
+  function deleteCard(id) {
+    setData({ ...data, cards: data.cards.filter((card) => card.id !== id) })
+  }
   return (
-    <div className='h-100 position-relative'>
-      <AnimatePresence>
-        <ListGroup variant='flush'>
-          {data.cards
-            .filter(({ isTrash, isFavorite, isArchive }) => {
-              if (splat === 'trash') {
-                return isTrash
-              }
-              if (splat === 'favorite') {
-                return isFavorite && !isArchive && !isTrash
-              }
-              if (splat === 'archive') {
-                return isArchive
-              }
-              return !isArchive && !isTrash
-            })
-            .map((card) => {
-              const left = {}
-              const right = {}
-              if (splat === '') {
-                left.color = 'success'
-                left.icon = 'archive'
-                left.action = () =>
-                  setData({
-                    cards: data.cards.map((value) =>
-                      value.id === card.id
-                        ? { ...value, isArchive: true }
-                        : value,
-                    ),
-                  })
-                right.color = 'danger'
-                right.icon = 'trash'
-                right.action = () =>
-                  setData({
-                    cards: data.cards.map((value) =>
-                      value.id === card.id
-                        ? { ...value, isTrash: true }
-                        : value,
-                    ),
-                  })
-              }
-              if (splat === 'favorite') {
-                left.color = 'warning'
-                left.icon = 'star-half-alt'
-                left.action = () =>
-                  setData({
-                    cards: data.cards.map((value) =>
-                      value.id === card.id
-                        ? { ...value, isFavorite: false }
-                        : value,
-                    ),
-                  })
-                right.color = 'danger'
-                right.icon = 'trash'
-                right.action = () =>
-                  setData({
-                    cards: data.cards.map((value) =>
-                      value.id === card.id
-                        ? { ...value, isTrash: true }
-                        : value,
-                    ),
-                  })
-              }
-              if (splat === 'trash') {
-                left.color = 'primary'
-                left.icon = 'arrow-left'
-                left.action = () =>
-                  setData({
-                    cards: data.cards.map((value) =>
-                      value.id === card.id
-                        ? { ...value, isTrash: false }
-                        : value,
-                    ),
-                  })
-                right.color = 'black'
-                right.icon = 'x'
-                right.action = () =>
-                  setData({
-                    cards: data.cards.filter((value) => value.id !== card.id),
-                  })
-              }
-              if (splat === 'archive') {
-                left.color = 'info'
-                left.icon = 'upload'
-                left.action = () =>
-                  setData({
-                    cards: data.cards.map((value) =>
-                      value.id === card.id
-                        ? { ...value, isArchive: false }
-                        : value,
-                    ),
-                  })
-                right.color = 'danger'
-                right.icon = 'trash'
-                right.action = () =>
-                  setData({
-                    cards: data.cards.map((value) =>
-                      value.id === card.id
-                        ? { ...value, isTrash: true }
-                        : value,
-                    ),
-                  })
-              }
-              return (
-                <CardItem
-                  key={card.id}
-                  card={card}
-                  left={left}
-                  right={right}
-                />
-              )
-            })}
-        </ListGroup>
-      </AnimatePresence>
-
-      <Button
-        onClick={() => {
-          setData({
-            cards: [
-              ...data.cards,
-              {
-                id: crypto.randomUUID(),
-                title: 'google/quux',
-                website: 'https://www.google.com/',
-                isArchive: false,
-                isFavorite: false,
-                isTrash: false,
-                fields: [],
-              },
-            ],
-          })
-        }}
-        variant='primary'
-        style={{ position: 'absolute', right: 20, bottom: 20 }}
-      >
-        <i className='fa-solid fa-plus' />
-      </Button>
+    <div
+      className='flex-grow-1 d-flex flex-column'
+      style={{ minHeight: 0 }}
+    >
+      <ListGroup className='flex-grow-1 overflow-scroll'>
+        {cards.map((card) => (
+          <CardItem
+            key={card.id}
+            card={card}
+            updateCard={updateCard}
+            deleteCard={deleteCard}
+          />
+        ))}
+      </ListGroup>
     </div>
   )
 }

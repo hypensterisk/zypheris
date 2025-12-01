@@ -1,120 +1,121 @@
 /** @format */
 
-import { motion, useMotionValue, useTransform, animate } from 'framer-motion'
-import { Row, Col, Image, Button, ListGroup } from 'react-bootstrap'
+import { useId } from 'react'
+import Dropdown from 'react-bootstrap/Dropdown'
+import DropdownButton from 'react-bootstrap/DropdownButton'
+import Image from 'react-bootstrap/Image'
+import ListGroupItem from 'react-bootstrap/ListGroupItem'
+import Stack from 'react-bootstrap/Stack'
+import ToggleButton from 'react-bootstrap/ToggleButton'
 import { useNavigate } from 'react-router'
 
-import useAppStore from '@hooks/useAppStore'
-
-export default function CardItem({ card, left, right }) {
+export default function CardItem({ card, updateCard, deleteCard }) {
   const navigate = useNavigate()
-  const data = useAppStore((state) => state.data)
-  const setData = useAppStore((state) => state.setData)
-
-  const x = useMotionValue(0)
-  const scale = useMotionValue(1)
-
-  async function handleDragEnd(_, { offset }) {
-    if (Math.abs(offset.x) < innerWidth * 0.5) {
-      animate(x, 0, { type: 'spring', stiffness: 300, damping: 10 })
-    } else {
-      await animate(x, offset.x > 0 ? innerWidth * 1.5 : -(innerWidth * 1.5), {
-        duration: 0.3,
-        ease: 'easeInOut',
-      })
-      await animate(scale, 0, { duration: 0.3, ease: 'easeInOut' })
-      offset.x > 0 ? left.action() : right.action()
-    }
+  const { id, title, website, isFavorite, isArchive, isTrash } = card
+  function handleMoveToArchive() {
+    updateCard(id, { isArchive: true })
   }
+  function handleRestoreFromArchive() {
+    updateCard(id, { isArchive: false })
+  }
+  function handleMoveToTrash() {
+    updateCard(id, { isTrash: true })
+  }
+  function handleRestoreFromTrash() {
+    updateCard(id, { isTrash: false })
+  }
+  function handleDeletePermanently() {
+    deleteCard(id)
+  }
+  function handleToggleFavorite(event) {
+    const { checked } = event.target
+    updateCard(id, { isFavorite: checked })
+  }
+  function handleViewCard() {
+    navigate(`/database/card/${id}`)
+  }
+  const toggleButtonId = useId()
   return (
-    <motion.div
-      onClick={() => {
-        navigate(`/database/card/${card.id}`)
-      }}
-      style={{ scale }}
-      className='position-relative overflow-hidden'
+    <ListGroupItem
+      variant={
+        isTrash
+          ? 'danger'
+          : isArchive
+            ? 'success'
+            : isFavorite
+              ? 'warning'
+              : 'dark'
+      }
+      className='d-flex flex-row justify-content-between align-items-center gap-2'
     >
-      <div className='position-absolute top-0 start-0 w-100 h-100 d-flex align-items-center justify-content-between'>
-        <CardSwipeAction
-          x={x}
-          color={left.color}
-          icon={left.icon}
-          negate={false}
-        />
-        <CardSwipeAction
-          x={x}
-          color={right.color}
-          icon={right.icon}
-          negate
+      <div className='flex-shrink-0'>
+        <Image
+          roundedCircle
+          src={`https://icon.horse/icon/${new URL(website).hostname}`}
+          width={48}
+          height={48}
         />
       </div>
-      <motion.div
-        drag='x'
-        style={{ x }}
-        onDragEnd={handleDragEnd}
+      <Stack
+        className='flex-grow-1 overflow-hidden'
+        gap={1}
+        style={{ minWidth: 0 }}
       >
-        <ListGroup.Item className='py-3'>
-          <Row className='align-items-center'>
-            <Col xs='auto'>
-              <Image
-                src={`https://www.google.com/s2/favicons?sz=64&domain_url=${card.website}`}
-                roundedCircle
-                width={32}
-                height={32}
-                alt='favicon'
-              />
-            </Col>
-            <Col>
-              <div className='fw-bold'>{card.title}</div>
-              <div className='text-muted small'>{card.website}</div>
-            </Col>
-            <Col xs='auto'>
-              <Button
-                active
-                onClick={(event) => {
-                  event.stopPropagation()
-                  setData({
-                    cards: data.cards.map((value) =>
-                      value.id === card.id
-                        ? { ...value, isFavorite: !card.isFavorite }
-                        : value,
-                    ),
-                  })
-                }}
-                variant={card.isFavorite ? 'warning' : 'outline-light'}
-              >
-                <i
-                  className={`fa-${card.isFavorite ? 'solid' : 'regular'} fa-star`}
-                />
-              </Button>
-            </Col>
-          </Row>
-        </ListGroup.Item>
-      </motion.div>
-    </motion.div>
-  )
-}
-
-function CardSwipeAction({ x, color, icon, negate }) {
-  const width = useTransform(
-    x,
-    [0, negate ? -innerWidth : innerWidth],
-    [0, innerWidth],
-  )
-  const scale = useTransform(
-    x,
-    [0, negate ? -(innerWidth * 0.2) : innerWidth * 0.2],
-    [0, 1],
-  )
-  return (
-    <motion.div
-      style={{ width }}
-      className={`h-100 bg-${color} d-flex justify-content-center align-items-center`}
-    >
-      <motion.i
-        style={{ scale }}
-        className={`fa-solid fa-2x fa-${icon}`}
-      />
-    </motion.div>
+        <div className='fw-bold text-truncate'>{title}</div>
+        <div className='text-muted small text-truncate'>{website}</div>
+      </Stack>
+      <Stack
+        direction='horizontal'
+        gap={2}
+      >
+        <ToggleButton
+          type='checkbox'
+          checked={isFavorite}
+          disabled={isArchive || isTrash}
+          id={toggleButtonId}
+          onChange={handleToggleFavorite}
+          value={1}
+          size='sm'
+          variant='outline-warning'
+        >
+          <i className='fa-solid fa-star' />
+        </ToggleButton>
+        <DropdownButton
+          title={<i className='fa-solid fa-ellipsis-vertical' />}
+          size='sm'
+          variant='outline-light'
+        >
+          <Dropdown.Item onClick={handleViewCard}>
+            <i className='fa-solid fa-eye' /> View Card
+          </Dropdown.Item>
+          {isTrash ? (
+            <>
+              <Dropdown.Item onClick={handleRestoreFromTrash}>
+                <i className='fa-solid fa-trash-restore' /> Restore From Trash
+              </Dropdown.Item>
+              <Dropdown.Item onClick={handleDeletePermanently}>
+                <i className='fa-solid fa-x' /> Delete Permanently
+              </Dropdown.Item>
+            </>
+          ) : (
+            <>
+              {isArchive ? (
+                <Dropdown.Item onClick={handleRestoreFromArchive}>
+                  <i className='fa-solid fa-arrow-rotate-left' /> Restore From
+                  Archive
+                </Dropdown.Item>
+              ) : (
+                <Dropdown.Item onClick={handleMoveToArchive}>
+                  <i className='fa-solid fa-archive' /> Move To Archive
+                </Dropdown.Item>
+              )}
+              <Dropdown.Item onClick={handleMoveToTrash}>
+                <i className='fa-solid fa-trash' /> Move To Trash
+              </Dropdown.Item>
+            </>
+          )}
+        </DropdownButton>
+      </Stack>
+    </ListGroupItem>
   )
 }
