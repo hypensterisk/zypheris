@@ -25,7 +25,7 @@ export default function Upload() {
   )
   const handleChange = useCallback(
     (event) => {
-      const file = event.target.files.at(0)
+      const file = event.target.files.item(0)
       setFile(file)
     },
     [setFile],
