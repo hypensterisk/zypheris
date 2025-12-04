@@ -1,6 +1,6 @@
 {
   "name": "zypheris",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "description": "Simple web application for managing passwords",
   "keywords": [
     "password",
@@ -35,7 +35,6 @@
     "bootstrap": "^5.3.8",
     "crypto-js": "^4.2.0",
     "formik": "^2.4.6",
-    "framer-motion": "^12.23.24",
     "localforage": "^1.10.0",
     "lodash": "^4.17.21",
     "object-path": "^0.11.8",
@@ -45,12 +44,15 @@
     "react-dom": "^19.2.0",
     "react-router": "^7.9.4",
     "use-debounce": "^10.0.6",
+    "valid-filename": "^4.0.0",
     "yup": "^1.7.1",
     "zustand": "^5.0.8"
   },
   "devDependencies": {
     "@eslint/js": "^9.38.0",
     "@vitejs/plugin-react": "^5.1.0",
+    "@zhaojjiang/vite-plugin-eruda": "^0.0.5",
+    "eruda": "^3.4.3",
     "eslint": "^9.38.0",
     "eslint-config-prettier": "^10.1.8",
     "eslint-plugin-import": "^2.32.0",

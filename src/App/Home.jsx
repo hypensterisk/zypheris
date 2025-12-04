@@ -1,15 +1,28 @@
 /** @format */
 
-import useDatabaseStore from '@hooks/useDatabaseStore'
 import Button from 'react-bootstrap/Button'
 import { Link, Navigate } from 'react-router'
 
-export default function Landing() {
-  const password = useDatabaseStore((state) => state.password)
-  const database = useDatabaseStore((state) => state.database)
-  const data = useDatabaseStore((state) => state.data)
-  if (data) return <Navigate to='/dashboard' />
-  if (database && !password) return <Navigate to='/unlock' />
+import useAppStore from '@hooks/useAppStore'
+
+export default function Home() {
+  const password = useAppStore((state) => state.password)
+  const database = useAppStore((state) => state.database)
+  const data = useAppStore((state) => state.data)
+  if (data)
+    return (
+      <Navigate
+        to='/database'
+        replace={true}
+      />
+    )
+  if (database && !password)
+    return (
+      <Navigate
+        to='/unlock'
+        replace={true}
+      />
+    )
   return (
     <div className='h-100 d-flex flex-column'>
       <div className='h-50 d-flex flex-column align-items-center justify-content-end'>
@@ -20,6 +33,7 @@ export default function Landing() {
         <Button
           as={Link}
           to='setup'
+          replace={true}
           variant='outline-light'
           size='lg'
         >

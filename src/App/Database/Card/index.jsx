@@ -2,8 +2,8 @@
 
 import { Routes, Route } from 'react-router'
 
-import Edit from './Edit.jsx'
-import Home from './Home.jsx'
+import Edit from './Edit'
+import Home from './Home'
 
 export default function Card() {
   return (

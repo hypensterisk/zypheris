@@ -1,7 +1,8 @@
 /** @format */
 
-import StateButton, { State } from '@components/StateButton'
 import { useState, useRef, useEffect } from 'react'
+
+import StateButton, { State } from '@components/StateButton'
 
 export default function FeedbackButton({ icon, onClick, ...props }) {
   const [index, setIndex] = useState(0)

@@ -59,6 +59,16 @@ export default defineConfig([
               'type',
             ],
           ],
+          pathGroups: [
+            {
+              group: 'internal',
+              pattern: '@components/**',
+              position: 'before',
+            },
+            { group: 'internal', pattern: '@fields/**', position: 'before' },
+            { group: 'internal', pattern: '@hooks/**', position: 'before' },
+          ],
+          pathGroupsExcludedImportTypes: ['internal'],
           'newlines-between': 'always',
           alphabetize: {
             order: 'asc',

@@ -5,7 +5,7 @@ import localforage from 'localforage'
 import { create } from 'zustand'
 import { persist, createJSONStorage } from 'zustand/middleware'
 
-const useDatabaseStore = create(
+const useAppStore = create(
   persist(
     (set, get) => ({
       name: '',
@@ -67,4 +67,4 @@ const useDatabaseStore = create(
   ),
 )
 
-export default useDatabaseStore
+export default useAppStore

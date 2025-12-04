@@ -1,21 +1,29 @@
 /** @format */
 
-import useDatabaseStore from '@hooks/useDatabaseStore'
 import { Routes, Route, Navigate, useLocation } from 'react-router'
 
-import Card from './Card/index.jsx'
-import Home from './Home/index.jsx'
+import useAppStore from '@hooks/useAppStore'
 
-export default function Dashboard() {
+import Card from './Card'
+import Home from './Home'
+
+export default function Database() {
   const location = useLocation()
-  const database = useDatabaseStore((state) => state.database)
-  const password = useDatabaseStore((state) => state.password)
-  if (!database) return <Navigate to='/setup' />
+  const database = useAppStore((state) => state.database)
+  const password = useAppStore((state) => state.password)
+  if (!database)
+    return (
+      <Navigate
+        to='/setup'
+        replace={true}
+      />
+    )
   if (!password)
     return (
       <Navigate
         to='/unlock'
         state={{ continue: location.pathname }}
+        replace={true}
       />
     )
   return (

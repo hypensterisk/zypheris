@@ -5,30 +5,31 @@ import Nav from 'react-bootstrap/Nav'
 import Navbar from 'react-bootstrap/Navbar'
 import Offcanvas from 'react-bootstrap/Offcanvas'
 
-import ExportDatabaseButton from './ExportDatabaseButton.jsx'
-import LogoutButton from './LogoutButton.jsx'
+import ContextualActions from './ContextualActions'
+import ExportDatabaseAction from './ExportDatabaseAction'
+import LogoutAction from './LogoutAction'
 
 export default function Header() {
   return (
     <Navbar
       expand={false}
-      className='bg-body-tertiary'
+      bg='body-tertiary'
     >
       <Container fluid>
-        <Navbar.Brand>Dashboard</Navbar.Brand>
-        <Navbar.Toggle className='px-3 py-2'>
-          <i className='fa-solid fa-gear' />
-        </Navbar.Toggle>
-        <Navbar.Offcanvas placement='end'>
+        <Navbar.Toggle />
+        <Navbar.Brand>Database</Navbar.Brand>
+        <ContextualActions />
+        <Navbar.Offcanvas>
           <Offcanvas.Header closeButton>
             <Offcanvas.Title>
-              <i className='fa-solid fa-gear' /> Settings
+              <i className='fa-solid fa-bars' />
+              {' Menu'}
             </Offcanvas.Title>
           </Offcanvas.Header>
           <Offcanvas.Body>
             <Nav>
-              <ExportDatabaseButton />
-              <LogoutButton />
+              <ExportDatabaseAction />
+              <LogoutAction />
             </Nav>
           </Offcanvas.Body>
         </Navbar.Offcanvas>
