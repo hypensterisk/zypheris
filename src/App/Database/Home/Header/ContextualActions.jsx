@@ -2,27 +2,25 @@
 
 import DropdownButton from 'react-bootstrap/DropdownButton'
 import DropdownItem from 'react-bootstrap/DropdownItem'
+import { useNavigate } from 'react-router'
 
 import useAppStore from '@hooks/useAppStore'
 
 export default function ContextualActions() {
+  const navigate = useNavigate()
   function handleNewCard() {
-    const { data, setData } = useAppStore.getState()
-    setData({
-      ...data,
-      cards: [
-        ...data.cards,
-        {
-          id: crypto.randomUUID(),
-          title: 'facebook/michael',
-          website: 'https://facebook.com',
-          isArchive: false,
-          isTrash: false,
-          isFavorite: false,
-          fields: [],
-        },
-      ],
+    const { data } = useAppStore.getState()
+    const id = crypto.randomUUID()
+    data.cards.push({
+      id,
+      title: 'facebook/michael',
+      website: 'https://facebook.com',
+      isArchive: false,
+      isTrash: false,
+      isFavorite: false,
+      fields: [],
     })
+    navigate(`/database/card/${id}/edit`)
   }
   return (
     <DropdownButton

@@ -3,7 +3,7 @@
 import $fields from '@fields'
 import Form from 'react-bootstrap/Form'
 import Modal from 'react-bootstrap/Modal'
-import { useNavigate, useParams } from 'react-router'
+import { useNavigate, useParams, useLocation } from 'react-router'
 
 import BaseButton from '@components/BaseButton'
 import ViewInputGroup from '@components/ViewInputGroup'
@@ -11,15 +11,16 @@ import ViewInputGroup from '@components/ViewInputGroup'
 import useCard from '@hooks/useCard'
 
 export default function Home() {
+  const { state } = useLocation()
   const { id } = useParams()
   const [card] = useCard(id)
   const navigate = useNavigate()
 
   function handleHide() {
-    navigate('/database')
+    navigate(state?.from || '/database')
   }
   function handleEdit() {
-    navigate(`/database/card/${id}/edit`)
+    navigate(`/database/card/${id}/edit`, { state })
   }
 
   return (

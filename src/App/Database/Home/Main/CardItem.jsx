@@ -7,9 +7,10 @@ import Image from 'react-bootstrap/Image'
 import ListGroupItem from 'react-bootstrap/ListGroupItem'
 import Stack from 'react-bootstrap/Stack'
 import ToggleButton from 'react-bootstrap/ToggleButton'
-import { useNavigate } from 'react-router'
+import { useNavigate, useLocation } from 'react-router'
 
 export default function CardItem({ card, updateCard, deleteCard }) {
+  const { pathname, search, hash } = useLocation()
   const navigate = useNavigate()
   const { id, title, website, isFavorite, isArchive, isTrash } = card
   function handleMoveToArchive() {
@@ -32,7 +33,9 @@ export default function CardItem({ card, updateCard, deleteCard }) {
     updateCard(id, { isFavorite: checked })
   }
   function handleViewCard() {
-    navigate(`/database/card/${id}`)
+    navigate(`/database/card/${id}`, {
+      state: { from: pathname + search + hash },
+    })
   }
   const toggleButtonId = useId()
   return (
