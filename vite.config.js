@@ -8,7 +8,7 @@ import { defineConfig } from 'vite'
 export default defineConfig({
   plugins: [
     react(),
-    pluginEruda({ enable: process.env.DEV, entry: 'src/index.jsx' }),
+    pluginEruda({ enabled: process.env.DEV, entry: 'src/index.jsx' }),
   ],
   base: process.env.VITE_BASE,
   resolve: {
