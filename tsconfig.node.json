@@ -1,0 +1,5 @@
+{
+  "exclude": ["dist", "src"],
+  "extends": "@tsconfig/node22/tsconfig.json",
+  "include": ["**/*"]
+}
