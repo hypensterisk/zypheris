@@ -1,4 +1,8 @@
 {
+  "compilerOptions": {
+    "tsBuildInfoFile": "./node_modules/.tmp/tsconfig.node.tsbuildinfo",
+    "noEmit": true
+  },
   "exclude": ["dist", "src"],
   "extends": "@tsconfig/node22/tsconfig.json",
   "include": ["**/*"]
