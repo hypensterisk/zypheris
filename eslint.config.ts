@@ -7,6 +7,7 @@ import js from '@eslint/js'
 import { importX } from 'eslint-plugin-import-x'
 import eslintConfigPrettier from 'eslint-config-prettier/flat'
 import unusedImports from 'eslint-plugin-unused-imports'
+import globals from 'globals'
 
 const baseConfig: ConfigWithExtends = {
   languageOptions: { parserOptions: { projectService: true } },
@@ -20,9 +21,16 @@ const baseConfig: ConfigWithExtends = {
   },
 }
 
-const nodeConfig = { files: ['**/*.ts'], ignores: ['public', 'src'] }
+const nodeConfig = {
+  files: ['**/*.ts'],
+  ignores: ['public', 'src'],
+  languageOptions: { globals: globals.nodeBuiltin },
+}
 
-const appConfig = { files: ['src/**/*.{ts,tsx}'] }
+const appConfig = {
+  files: ['src/**/*.{ts,tsx}'],
+  languageOptions: { globals: globals.browser },
+}
 
 const config: Config[] = defineConfig([
   globalIgnores(['.github', '.husky', 'dist', '**/*.{js,cjs,mjs}']),
