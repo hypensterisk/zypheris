@@ -1,13 +1,14 @@
 /** @format */
 
 import { defineConfig, globalIgnores } from 'eslint/config'
+import type { ConfigWithExtends, Config } from '@eslint/config-helpers'
 import * as tseslint from 'typescript-eslint'
 import js from '@eslint/js'
 import { importX } from 'eslint-plugin-import-x'
 import eslintConfigPrettier from 'eslint-config-prettier/flat'
 import unusedImports from 'eslint-plugin-unused-imports'
 
-const baseConfig = {
+const baseConfig: ConfigWithExtends = {
   languageOptions: { parserOptions: { projectService: true } },
   plugins: { 'unused-imports': unusedImports },
   rules: {
@@ -23,14 +24,16 @@ const nodeConfig = { files: ['**/*.ts'], ignores: ['public', 'src'] }
 
 const appConfig = { files: ['src/**/*.{ts,tsx}'] }
 
-export default defineConfig([
+const config: Config[] = defineConfig([
   globalIgnores(['.github', '.husky', 'dist', '**/*.{js,cjs,mjs}']),
   js.configs.recommended,
   tseslint.configs.strictTypeChecked,
-  importX.flatConfigs.recommended,
-  importX.flatConfigs.typescript,
+  importX.flatConfigs.recommended as ConfigWithExtends,
+  importX.flatConfigs.typescript as ConfigWithExtends,
   baseConfig,
   nodeConfig,
   appConfig,
   eslintConfigPrettier,
 ])
+
+export default config
