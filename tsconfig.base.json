@@ -1,0 +1,25 @@
+{
+  "compilerOptions": {
+    "allowUnreachableCode": false,
+    "allowUnusedLabels": false,
+    "exactOptionalPropertyTypes": true,
+    "noFallthroughCasesInSwitch": true,
+    "noImplicitOverride": true,
+    "noImplicitReturns": true,
+    "noPropertyAccessFromIndexSignature": true,
+    "noUncheckedIndexedAccess": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "strict": true,
+    "allowImportingTsExtensions": true,
+    "noUncheckedSideEffectImports": true,
+    "resolveJsonModule": true,
+    "noEmit": true,
+    "erasableSyntaxOnly": true,
+    "isolatedDeclarations": true,
+    "verbatimModuleSyntax": true,
+    "target": "esnext",
+    "composite": true,
+    "skipLibCheck": true
+  }
+}
