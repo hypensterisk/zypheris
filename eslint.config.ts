@@ -15,6 +15,7 @@ import globals from 'globals'
 import reactPlugin from 'eslint-plugin-react'
 import reactHooks from 'eslint-plugin-react-hooks'
 import jsxA11y from 'eslint-plugin-jsx-a11y'
+import { createTypeScriptImportResolver } from 'eslint-import-resolver-typescript'
 
 const baseConfig: ConfigWithExtends = {
   languageOptions: { parserOptions: { projectService: true } },
@@ -23,8 +24,23 @@ const baseConfig: ConfigWithExtends = {
     'import-x/order': 'error',
     '@typescript-eslint/no-unused-vars': 'off',
     'unused-imports/no-unused-imports': 'error',
-    'unused-imports/no-unused-vars': 'error',
+    'unused-imports/no-unused-vars': [
+      'error',
+      {
+        vars: 'all',
+        varsIgnorePattern: '^_',
+        args: 'all',
+        argsIgnorePattern: '^_',
+      },
+    ],
     'no-console': 'error',
+  },
+  settings: {
+    'import-x/resolver-next': [
+      createTypeScriptImportResolver({
+        project: ['tsconfig.app.json', 'tsconfig.node.json'],
+      }),
+    ],
   },
 }
 
